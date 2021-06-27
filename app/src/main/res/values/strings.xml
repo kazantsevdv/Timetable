@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Timetable</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_classes">Classes</string>
+    <string name="are_you_ready_fo_exams">Are you ready fo exams?</string>
+    <string name="homework">Homework</string>
+    <string name="classes_today">classes today</string>
+    <string name="classes">Classes</string>
+    <string name="open_in">Open in</string>
+    <string name="today">Today,</string>
+
+    <string name="minutes">Minutes</string>
+    <string name="hours">Hours</string>
+    <string name="days">Days</string>
+    <string name="_dot_dot">:</string>
+    <string name="no_data">Нет данных</string>
+</resources>
