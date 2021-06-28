@@ -9,6 +9,12 @@ class DateUtil {
         return sdf.format(Date())
     }
 
+    fun dateToExam(date:String):Long{
+        val formatDate = SimpleDateFormat("dd-M-yyyy", Locale.getDefault())
+        val examDate=formatDate.parse(date)
+        val now=Date()
+        return examDate.time-now.time
+    }
     fun isDatePeriod(start: String, end: String): Boolean {
 
         val now = Calendar.getInstance(TimeZone.getDefault())

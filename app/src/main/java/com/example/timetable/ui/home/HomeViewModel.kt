@@ -22,16 +22,17 @@ class HomeViewModel @Inject constructor(
     private var _dataHomework = MutableLiveData<AppState<List<Homework>>>()
     var dataHomework: LiveData<AppState<List<Homework>>> = _dataHomework
 
-    private var _now = MutableLiveData<String>()
-    var now: LiveData<String> = _now
+    private var _examDate = MutableLiveData<Long>()
+    var examDate: LiveData<Long> = _examDate
+
+
     private var _activRowClasses = MutableLiveData<Int>()
     var activRowClasses: LiveData<Int> = _activRowClasses
-    private var _classesNum = MutableLiveData<Int>()
-    var classesNum: LiveData<Int> = _classesNum
+
 
     fun getClasses(data: Date) {
 
-        _now.value = dateUtil.getCurrentDate("dd MMMM")
+
 
 
         _dataClasses.value = AppState.Loading(null)
@@ -74,18 +75,35 @@ class HomeViewModel @Inject constructor(
         fun getHomework() {
             _dataHomework.value = AppState.Loading(null)
         }
-            viewModelScope.launch {
-                try {
-                    _dataHomework.value = AppState.Success(repo.getHomework())
+        viewModelScope.launch {
+            try {
+                _dataHomework.value = AppState.Success(repo.getHomework())
 
-                } catch (exception: Exception) {
-                    _dataHomework.value = AppState.Error(exception)
-                }
+            } catch (exception: Exception) {
+                _dataHomework.value = AppState.Error(exception)
+            }
         }
 
     }
 
+    fun getHomework() {
+        _dataHomework.value = AppState.Loading(null)
 
+        viewModelScope.launch {
+            try {
+                _dataHomework.value = AppState.Success(repo.getHomework())
+
+            } catch (exception: Exception) {
+                _dataHomework.value = AppState.Error(exception)
+            }
+        }
+    }
+
+    fun getExamDate(){
+        viewModelScope.launch {
+           _examDate.value=dateUtil.dateToExam(repo.getExamDate())
+        }
+    }
     @Suppress("UNCHECKED_CAST")
     class Factory @Inject constructor(
         private val viewModerProvider: Provider<HomeViewModel>

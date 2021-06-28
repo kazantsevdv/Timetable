@@ -27,10 +27,14 @@ class TimetableRepoImpl:TimetableRepo {
        delay(500)
         return arrayListOf(
             Homework("01-07-2021","Истрия","Чтонибуть почитать","file:///android_asset/a2.png"),
-            Homework("01-07-2021","География","Чтонибуть найти","file:///android_asset/a1.png"),
-            Homework("01-07-2021","Труд","Чтонибуть сделать","file:///android_asset/a3.png"),
-            Homework("01-07-2021","Математика","Чтонибуть посчитать","file:///android_asset/a1.png"),
+            Homework("05-07-2021","География","Чтонибуть найти","file:///android_asset/a1.png"),
+            Homework("07-07-2021","Труд","Чтонибуть сделать","file:///android_asset/a3.png"),
+            Homework("09-07-2021","Математика","Чтонибуть посчитать","file:///android_asset/a1.png"),
 
         )
+    }
+
+    override suspend fun getExamDate(): String {
+        return "01-07-2021"
     }
 }

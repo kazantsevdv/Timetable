@@ -7,4 +7,6 @@ import java.util.*
 interface TimetableRepo {
     suspend fun getClasses(date: Date):List<Classes>
     suspend fun getHomework():List<Homework>
+    suspend fun getExamDate():String
+
 }

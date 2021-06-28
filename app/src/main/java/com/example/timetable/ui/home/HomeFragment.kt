@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.timetable.App
 import com.example.timetable.databinding.FragmentHomeBinding
 import com.example.timetable.model.AppState
@@ -39,7 +38,7 @@ class HomeFragment : Fragment() {
     private val adapterHomework by lazy(LazyThreadSafetyMode.NONE) {
         AdapterHomeworkList(imageLoader)
     }
-    private val navigation by lazy { findNavController() }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,9 +47,8 @@ class HomeFragment : Fragment() {
     ): View {
         App.component.inject(this)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -62,6 +60,8 @@ class HomeFragment : Fragment() {
 
     private fun loadData() {
         viewModel.getClasses(Date())
+        viewModel.getHomework()
+        viewModel.getExamDate()
     }
 
     private fun setupUI() {
@@ -102,11 +102,13 @@ class HomeFragment : Fragment() {
                 }
             }
         })
-//        viewModel.now.observe(viewLifecycleOwner, {
-//            binding.tvToday.text = it
-//        })
+
         viewModel.activRowClasses.observe(viewLifecycleOwner, {
             binding.rvClasses.scrollToPosition(it)
+        })
+
+        viewModel.examDate.observe(viewLifecycleOwner,{
+            binding.countdown.start(it)
         })
     }
 
