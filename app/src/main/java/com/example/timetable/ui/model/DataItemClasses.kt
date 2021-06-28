@@ -1,6 +1,6 @@
-package com.example.timetable.ui.classes.model
+package com.example.timetable.ui.model
 
-sealed class DataItem {
+sealed class DataItemClasses {
     data class Classes(
         val timeStart: String,
         val timeEnd: String,
@@ -9,7 +9,7 @@ sealed class DataItem {
         val info: String,
         val img: String,
         var openIn: Boolean = false
-    ) : DataItem()
+    ) : DataItemClasses()
 
     data class ClassesAdd(
         val timeStart: String,
@@ -19,11 +19,11 @@ sealed class DataItem {
         val info: String,
         val img: String,
         var openIn: Boolean = false
-    ) : DataItem()
+    ) : DataItemClasses()
 
     data class Header(
         val timeStart: String,
         val timeEnd: String,
         val isActiv:Boolean=false
-    ) : DataItem()
+    ) : DataItemClasses()
 }

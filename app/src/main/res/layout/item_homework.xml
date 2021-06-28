@@ -36,7 +36,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tv_theme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -53,11 +53,11 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:textColor="@color/primaryLightColor"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:drawableLeftCompat="@drawable/ic_baseline_access_time_24"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                app:layout_constraintStart_toStartOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="@+id/tv_theme"
+                app:layout_constraintTop_toBottomOf="@+id/tv_theme"
                 tools:text="2 day left" />
 
             <TextView
@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="end"
-                app:constraint_referenced_ids="textView,tv_time" />
+                app:constraint_referenced_ids="tv_theme,tv_time" />
 
             <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/barrier3"

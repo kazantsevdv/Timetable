@@ -1,7 +1,6 @@
 package com.example.timetable.model
 
 data class Classes(
-    val id: Int,
     val timeStart: String,
     val timeEnd: String,
     val theme: String,

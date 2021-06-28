@@ -5,18 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.timetable.App
 import com.example.timetable.databinding.FragmentClassesBinding
 import com.example.timetable.model.AppState
 import com.example.timetable.repo.image.IImageLoader
-import com.example.timetable.ui.classes.model.DataItem
+import com.example.timetable.ui.model.DataItemClasses
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 import javax.inject.Inject
@@ -33,7 +30,7 @@ class ClassesFragment : Fragment() {
     private val viewModel: ClassesViewModel by viewModels { viewModeProvider.get() }
 
     private val adapter by lazy(LazyThreadSafetyMode.NONE) {
-        AdapterList(onListItemClickListener, imageLoader)
+        AdapterClassesList(onListItemClickListener, imageLoader)
     }
     private val navigation by lazy { findNavController() }
 
@@ -74,7 +71,7 @@ class ClassesFragment : Fragment() {
         viewModel.data.observe(viewLifecycleOwner, {
             it?.let { result ->
                 when (result) {
-                    is AppState.Success<List<DataItem>> -> {
+                    is AppState.Success<List<DataItemClasses>> -> {
                         showSuccess(result.data)
                     }
                     is AppState.Error -> {
@@ -96,13 +93,13 @@ class ClassesFragment : Fragment() {
     }
 
 
-    private fun retrieveData(data: List<DataItem>) {
+    private fun retrieveData(data: List<DataItemClasses>) {
         adapter.apply {
             updateData(data)
         }
     }
 
-    private fun showSuccess(data: List<DataItem>?) {
+    private fun showSuccess(data: List<DataItemClasses>?) {
         if (!data.isNullOrEmpty()) {
             binding.apply {
                 progressBar.visibility = View.GONE

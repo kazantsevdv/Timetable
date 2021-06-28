@@ -3,7 +3,7 @@ package com.example.timetable.ui.classes
 import androidx.lifecycle.*
 import com.example.timetable.model.AppState
 import com.example.timetable.repo.TimetableRepo
-import com.example.timetable.ui.classes.model.DataItem
+import com.example.timetable.ui.model.DataItemClasses
 import com.example.timetable.util.DateUtil
 import kotlinx.coroutines.launch
 import java.util.*
@@ -15,8 +15,8 @@ class ClassesViewModel @Inject constructor(
     private val dateUtil: DateUtil
 ) : ViewModel() {
 
-    private var _data = MutableLiveData<AppState<List<DataItem>>>()
-    var data: LiveData<AppState<List<DataItem>>> = _data
+    private var _data = MutableLiveData<AppState<List<DataItemClasses>>>()
+    var data: LiveData<AppState<List<DataItemClasses>>> = _data
     private var _now = MutableLiveData<String>()
     var now: LiveData<String> = _now
     private var _activRow = MutableLiveData<Int>()
@@ -33,14 +33,14 @@ class ClassesViewModel @Inject constructor(
         viewModelScope.launch {
             try {
 
-                val newdata: MutableList<DataItem> = mutableListOf()
+                val newdata: MutableList<DataItemClasses> = mutableListOf()
                 repo.getClasses(data).forEach {
                     val isActiv = dateUtil.isDatePeriod(it.timeStart, it.timeEnd)
                     if (isActiv) {
                         _activRow.value = newdata.size
                     }
                     newdata.add(
-                        DataItem.Header(
+                        DataItemClasses.Header(
                             it.timeStart,
                             it.timeEnd,
                             isActiv
@@ -49,14 +49,14 @@ class ClassesViewModel @Inject constructor(
 
                     if (it.info.isNullOrEmpty()) {
                         newdata.add(
-                            DataItem.Classes(
+                            DataItemClasses.Classes(
                                 it.timeStart, it.timeEnd,
                                 it.theme, it.teacher, it.info, it.img, isActiv
                             )
                         )
                     } else {
                         newdata.add(
-                            DataItem.ClassesAdd(
+                            DataItemClasses.ClassesAdd(
                                 it.timeStart, it.timeEnd,
                                 it.theme, it.teacher, it.info, it.img, isActiv
                             )
