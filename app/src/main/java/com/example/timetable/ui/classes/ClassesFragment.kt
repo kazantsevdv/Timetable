@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -89,6 +90,9 @@ class ClassesFragment : Fragment() {
         viewModel.now.observe(viewLifecycleOwner, {
             binding.tvToday.text = it
         })
+        viewModel.activRow.observe(viewLifecycleOwner, {
+            binding.rvClasses.scrollToPosition(it)
+        })
     }
 
 
@@ -137,7 +141,7 @@ class ClassesFragment : Fragment() {
     private val onListItemClickListener: OnListItemClickListener =
         object : OnListItemClickListener {
             override fun onItemClick() {
-
+                Toast.makeText(context, "открыть скайп", Toast.LENGTH_SHORT).show()
             }
         }
 

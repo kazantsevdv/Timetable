@@ -12,7 +12,7 @@ import javax.inject.Singleton
 class GlideModule {
     @Named("imgUrl")
     @Provides
-    fun imgUrl() = "https://image.tmdb.org/t/p/w500"
+    fun imgUrl() = ""
 
     @Singleton
     @Provides

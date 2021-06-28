@@ -100,9 +100,12 @@ class AdapterList(
             if (layoutPosition != RecyclerView.NO_POSITION) {
                 if (data is DataItem.Classes) {
                     binding.tvClasses.text = data.theme
-                    binding.tvTeacher.text=data.teacher
-                    binding.grOpenin.isVisible=data.openIn
+                    binding.tvTeacher.text = data.teacher
+                    binding.grOpenin.isVisible = data.openIn
+                    if (data.openIn)
+                        binding.cardView.setOnClickListener { onListItemClickListener.onItemClick() }
 
+                    imageLoader.loadInto(data.img,binding.imageView)
                 }
             }
         }
@@ -115,9 +118,12 @@ class AdapterList(
                 if (data is DataItem.ClassesAdd) {
 
                     binding.tvClasses.text = data.theme
-                    binding.tvTeacher.text=data.teacher
-                    binding.tvInfo.text=data.info
-                    binding.grOpenin.isVisible=data.openIn
+                    binding.tvTeacher.text = data.teacher
+                    binding.tvInfo.text = data.info
+                    binding.grOpenin.isVisible = data.openIn
+                    if (data.openIn)
+                        binding.cardView.setOnClickListener { onListItemClickListener.onItemClick() }
+                    imageLoader.loadInto(data.img,binding.imageView)
                 }
             }
         }

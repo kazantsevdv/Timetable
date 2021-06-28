@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/primaryDarkColor">
+>
 
     <ImageView
         android:id="@+id/iv_now"
@@ -23,7 +23,7 @@
         android:src="@drawable/circle_smal"
         app:layout_constraintBottom_toBottomOf="@+id/tv_date"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.0"
+
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/tv_date" />
 
