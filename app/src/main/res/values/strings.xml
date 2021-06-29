@@ -16,4 +16,5 @@
     <string name="days">Days</string>
     <string name="_dot_dot">:</string>
     <string name="no_data">Нет данных</string>
+    <string name="sec">sec</string>
 </resources>

@@ -20,9 +20,8 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
+                android:layout_height="@dimen/home_card_height"
+                app:cardCornerRadius="@dimen/card_radius"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -47,12 +46,12 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView2"
-                        app:suffixDay="Дней"
-                        app:suffixHour="Часов"
-                        app:suffixMinute="Минут"
-                        app:suffixSecond="Сек"
-                        app:suffixTextColor="#000000"
-                        app:suffixTextSize="16sp"
+                        app:suffixDay="@string/days"
+                        app:suffixHour="@string/hours"
+                        app:suffixMinute="@string/minutes"
+                        app:suffixSecond="@string/sec"
+                        app:suffixTextColor="@color/secondaryTextColor"
+                        app:suffixTextSize="@dimen/text_size_s"
                         app:timeTextColor="@color/primaryTextColor"
                         app:timeTextSize="25sp" />
 
@@ -64,7 +63,7 @@
                         android:gravity="center"
                         android:text="@string/are_you_ready_fo_exams"
                         android:textColor="@color/primaryTextColor"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/text_size_b"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -91,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="14sp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="@dimen/text_margin_1"
                 app:layout_constraintBottom_toBottomOf="@+id/classes"
                 app:layout_constraintEnd_toStartOf="@+id/classes_today"
                 app:layout_constraintTop_toTopOf="@+id/classes"
